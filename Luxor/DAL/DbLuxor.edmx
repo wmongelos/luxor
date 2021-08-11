@@ -1,0 +1,916 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbLuxorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Actividades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="Descripcion_Larga" Type="text" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Clientes_Tipo" Type="int" />
+          <Property Name="Codigo" Type="int" />
+          <Property Name="Fecha_Inicio" Type="date" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Razon_Social" Type="varchar" MaxLength="50" />
+          <Property Name="Fecha_Nacimiento" Type="date" />
+          <Property Name="Dni" Type="varchar" MaxLength="50" />
+          <Property Name="Cuit" Type="varchar" MaxLength="50" />
+          <Property Name="Domicilio_1" Type="varchar" MaxLength="50" />
+          <Property Name="Domicilio_2" Type="varchar" MaxLength="50" />
+          <Property Name="Domicilio_3" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono_Comercial" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono_Particular" Type="varchar" MaxLength="50" />
+          <Property Name="Representante" Type="varchar" MaxLength="50" />
+          <Property Name="Representante_Cuit" Type="varchar" MaxLength="50" />
+          <Property Name="Afip_Monotributo" Type="bit" Nullable="false" />
+          <Property Name="Afip_Empleador" Type="bit" Nullable="false" />
+          <Property Name="Afip_Regimen_Gral" Type="bit" Nullable="false" />
+          <Property Name="Impuestos_Ing_Brutos" Type="bit" Nullable="false" />
+          <Property Name="Impuestos_Conv_Multi" Type="bit" Nullable="false" />
+          <Property Name="Tasas_Municipales" Type="bit" Nullable="false" />
+          <Property Name="Id_Metodo_Facturacion" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clientes_Actividades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Cliente" Type="int" />
+          <Property Name="Id_Actividades" Type="int" />
+        </EntityType>
+        <EntityType Name="Clientes_CtaCte">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Usuario" Type="int" Nullable="false" />
+          <Property Name="Id_Cliente" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Debe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Haber" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Clientes_Tareas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Cliente" Type="int" Nullable="false" />
+          <Property Name="Id_Tarea_Tipo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clientes_Tipos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Configuracion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Variable" Type="varchar" MaxLength="50" />
+          <Property Name="Valor_C" Type="varchar" MaxLength="100" />
+          <Property Name="Valor_N" Type="int" />
+          <Property Name="Valor_D" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Empleadores_Tipo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Entidades_Bancarias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Borrado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Formas_Comunicacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Borrado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Localidades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Provincia" Type="int" />
+          <Property Name="Codigo_Afip" Type="int" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Borrado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medios_Pagos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Borrado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Metodos_Facturacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Monotributo_Categorias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Monotributo_Regimen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Organismos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Requiere_Acceso" Type="bit" Nullable="false" />
+          <Property Name="Borrado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provincias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Afip" Type="int" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Borrado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegimenGral_Categorias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Tareas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Cliente" Type="int" Nullable="false" />
+          <Property Name="Id_Tareas_Tipo" Type="int" Nullable="false" />
+          <Property Name="Id_Tareas_Estado" Type="int" Nullable="false" />
+          <Property Name="Id_Usuario" Type="int" Nullable="false" />
+          <Property Name="Mes" Type="int" Nullable="false" />
+          <Property Name="Año" Type="int" Nullable="false" />
+          <Property Name="Observacion" Type="text" />
+          <Property Name="Borrado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tareas_Estados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tareas_Periodos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Periodo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tareas_Principales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tareas_Secundarias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Tarea_Principal" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tareas_Tipos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Tarea_Principal" Type="int" Nullable="false" />
+          <Property Name="Id_Tarea_Secundaria" Type="int" Nullable="false" />
+          <Property Name="Id_Organismo" Type="int" Nullable="false" />
+          <Property Name="Id_Tarea_Periodo" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Borrado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Usuario_Rol" Type="int" />
+          <Property Name="Usuario" Type="varchar" MaxLength="50" />
+          <Property Name="Clave" Type="varchar" MaxLength="50" />
+          <Property Name="Borrado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios_Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Borrado" Type="bit" Nullable="false" />
+        </EntityType>
+        <Function Name="GetTareas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_tarea_principal" Type="int" Mode="In" />
+          <Parameter Name="id_tarea_secundaria" Type="int" Mode="In" />
+          <Parameter Name="id_tarea_tipo" Type="int" Mode="In" />
+          <Parameter Name="mes" Type="int" Mode="In" />
+          <Parameter Name="año" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Codigo" Type="int" />
+                <Property Name="Apellido" Type="varchar" MaxLength="50" />
+                <Property Name="Nombre" Type="varchar" MaxLength="50" />
+                <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+                <Property Name="Id_Tarea_Tipo" Type="int" />
+                <Property Name="Id_Tarea_Principal" Type="int" />
+                <Property Name="Id_Tarea_Secundaria" Type="int" />
+                <Property Name="Estado" Type="varchar" MaxLength="50" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <EntityContainer Name="dbLuxorModelStoreContainer">
+          <EntitySet Name="Actividades" EntityType="Self.Actividades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes_Actividades" EntityType="Self.Clientes_Actividades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes_CtaCte" EntityType="Self.Clientes_CtaCte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes_Tareas" EntityType="Self.Clientes_Tareas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes_Tipos" EntityType="Self.Clientes_Tipos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Configuracion" EntityType="Self.Configuracion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleadores_Tipo" EntityType="Self.Empleadores_Tipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entidades_Bancarias" EntityType="Self.Entidades_Bancarias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Formas_Comunicacion" EntityType="Self.Formas_Comunicacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Localidades" EntityType="Self.Localidades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medios_Pagos" EntityType="Self.Medios_Pagos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Metodos_Facturacion" EntityType="Self.Metodos_Facturacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Monotributo_Categorias" EntityType="Self.Monotributo_Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Monotributo_Regimen" EntityType="Self.Monotributo_Regimen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organismos" EntityType="Self.Organismos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provincias" EntityType="Self.Provincias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegimenGral_Categorias" EntityType="Self.RegimenGral_Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tareas" EntityType="Self.Tareas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tareas_Estados" EntityType="Self.Tareas_Estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tareas_Periodos" EntityType="Self.Tareas_Periodos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tareas_Principales" EntityType="Self.Tareas_Principales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tareas_Secundarias" EntityType="Self.Tareas_Secundarias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tareas_Tipos" EntityType="Self.Tareas_Tipos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios_Roles" EntityType="Self.Usuarios_Roles" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbLuxorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Configuracion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Variable" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Valor_C" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Valor_N" Type="Int32" />
+          <Property Name="Valor_D" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Entidades_Bancarias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Borrado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Formas_Comunicacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Borrado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Localidades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Provincia" Type="Int32" />
+          <Property Name="Codigo_Afip" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Borrado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Organismos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Requiere_Acceso" Type="Boolean" Nullable="false" />
+          <Property Name="Borrado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provincias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Afip" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Borrado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Usuario_Rol" Type="Int32" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Borrado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios_Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Borrado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="dbLuxorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Configuracion" EntityType="Self.Configuracion" />
+          <EntitySet Name="Entidades_Bancarias" EntityType="Self.Entidades_Bancarias" />
+          <EntitySet Name="Formas_Comunicacion" EntityType="Self.Formas_Comunicacion" />
+          <EntitySet Name="Localidades" EntityType="Self.Localidades" />
+          <EntitySet Name="Organismos" EntityType="Self.Organismos" />
+          <EntitySet Name="Provincias" EntityType="Self.Provincias" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <EntitySet Name="Usuarios_Roles" EntityType="Self.Usuarios_Roles" />
+          <EntitySet Name="Medios_Pagos" EntityType="dbLuxorModel.Medios_Pagos" />
+          <EntitySet Name="Clientes_Tipos" EntityType="dbLuxorModel.Clientes_Tipos" />
+          <EntitySet Name="Actividades" EntityType="dbLuxorModel.Actividades" />
+          <EntitySet Name="Clientes_Actividades" EntityType="dbLuxorModel.Clientes_Actividades" />
+          <EntitySet Name="Empleadores_Tipo" EntityType="dbLuxorModel.Empleadores_Tipo" />
+          <EntitySet Name="Monotributo_Categorias" EntityType="dbLuxorModel.Monotributo_Categorias" />
+          <EntitySet Name="Monotributo_Regimen" EntityType="dbLuxorModel.Monotributo_Regimen" />
+          <EntitySet Name="RegimenGral_Categorias" EntityType="dbLuxorModel.RegimenGral_Categorias" />
+          <EntitySet Name="Tareas_Estados" EntityType="dbLuxorModel.Tareas_Estados" />
+          <EntitySet Name="Clientes_CtaCte" EntityType="dbLuxorModel.Clientes_CtaCte" />
+          <EntitySet Name="Tareas" EntityType="dbLuxorModel.Tareas" />
+          <EntitySet Name="Tareas_Principales" EntityType="dbLuxorModel.Tareas_Principales" />
+          <EntitySet Name="Tareas_Periodos" EntityType="dbLuxorModel.Tareas_Periodos" />
+          <EntitySet Name="Tareas_Secundarias" EntityType="dbLuxorModel.Tareas_Secundarias" />
+          <EntitySet Name="Tareas_Tipos" EntityType="dbLuxorModel.Tareas_Tipos" />
+          <EntitySet Name="Clientes_Tareas" EntityType="dbLuxorModel.Clientes_Tareas" />
+          <FunctionImport Name="GetTareas" IsComposable="true" ReturnType="Collection(dbLuxorModel.GetTareas_Result)">
+            <Parameter Name="id_tarea_principal" Mode="In" Type="Int32" />
+            <Parameter Name="id_tarea_secundaria" Mode="In" Type="Int32" />
+            <Parameter Name="id_tarea_tipo" Mode="In" Type="Int32" />
+            <Parameter Name="mes" Mode="In" Type="Int32" />
+            <Parameter Name="año" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Clientes" EntityType="dbLuxorModel.Clientes" />
+          <EntitySet Name="Metodos_Facturacion" EntityType="dbLuxorModel.Metodos_Facturacion" />
+        </EntityContainer>
+        <EntityType Name="Medios_Pagos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Borrado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clientes_Tipos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Actividades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion_Larga" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Clientes_Actividades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Cliente" Type="Int32" />
+          <Property Name="Id_Actividades" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Empleadores_Tipo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Monotributo_Categorias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Monotributo_Regimen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RegimenGral_Categorias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Tareas_Estados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Clientes_CtaCte">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="Id_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Debe" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Haber" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Tareas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="Id_Tareas_Tipo" Type="Int32" Nullable="false" />
+          <Property Name="Id_Tareas_Estado" Type="Int32" Nullable="false" />
+          <Property Name="Id_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="Mes" Type="Int32" Nullable="false" />
+          <Property Name="Año" Type="Int32" Nullable="false" />
+          <Property Name="Observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Borrado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tareas_Principales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tareas_Periodos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tareas_Secundarias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Tarea_Principal" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tareas_Tipos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Tarea_Principal" Type="Int32" Nullable="false" />
+          <Property Name="Id_Tarea_Secundaria" Type="Int32" Nullable="false" />
+          <Property Name="Id_Organismo" Type="Int32" Nullable="false" />
+          <Property Name="Id_Tarea_Periodo" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Borrado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clientes_Tareas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="Id_Tarea_Tipo" Type="Int32" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="GetTareas_Result">
+          <Property Type="Int32" Name="Codigo" Nullable="true" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Tarea_Tipo" Nullable="true" />
+          <Property Type="Int32" Name="Id_Tarea_Principal" Nullable="true" />
+          <Property Type="Int32" Name="Id_Tarea_Secundaria" Nullable="true" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Clientes_Tipo" Type="Int32" />
+          <Property Name="Codigo" Type="Int32" />
+          <Property Name="Fecha_Inicio" Type="DateTime" Precision="0" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Razon_Social" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Nacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Dni" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cuit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Domicilio_1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Domicilio_2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Domicilio_3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono_Comercial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono_Particular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Representante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Representante_Cuit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Afip_Monotributo" Type="Boolean" Nullable="false" />
+          <Property Name="Afip_Empleador" Type="Boolean" Nullable="false" />
+          <Property Name="Afip_Regimen_Gral" Type="Boolean" Nullable="false" />
+          <Property Name="Impuestos_Ing_Brutos" Type="Boolean" Nullable="false" />
+          <Property Name="Impuestos_Conv_Multi" Type="Boolean" Nullable="false" />
+          <Property Name="Tasas_Municipales" Type="Boolean" Nullable="false" />
+          <Property Name="Id_Metodo_Facturacion" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Metodos_Facturacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbLuxorModelStoreContainer" CdmEntityContainer="dbLuxorEntities">
+          <EntitySetMapping Name="Configuracion">
+            <EntityTypeMapping TypeName="dbLuxorModel.Configuracion">
+              <MappingFragment StoreEntitySet="Configuracion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Variable" ColumnName="Variable" />
+                <ScalarProperty Name="Valor_C" ColumnName="Valor_C" />
+                <ScalarProperty Name="Valor_N" ColumnName="Valor_N" />
+                <ScalarProperty Name="Valor_D" ColumnName="Valor_D" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entidades_Bancarias">
+            <EntityTypeMapping TypeName="dbLuxorModel.Entidades_Bancarias">
+              <MappingFragment StoreEntitySet="Entidades_Bancarias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Formas_Comunicacion">
+            <EntityTypeMapping TypeName="dbLuxorModel.Formas_Comunicacion">
+              <MappingFragment StoreEntitySet="Formas_Comunicacion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Localidades">
+            <EntityTypeMapping TypeName="dbLuxorModel.Localidades">
+              <MappingFragment StoreEntitySet="Localidades">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Provincia" ColumnName="Id_Provincia" />
+                <ScalarProperty Name="Codigo_Afip" ColumnName="Codigo_Afip" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organismos">
+            <EntityTypeMapping TypeName="dbLuxorModel.Organismos">
+              <MappingFragment StoreEntitySet="Organismos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Requiere_Acceso" ColumnName="Requiere_Acceso" />
+                <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincias">
+            <EntityTypeMapping TypeName="dbLuxorModel.Provincias">
+              <MappingFragment StoreEntitySet="Provincias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Codigo_Afip" ColumnName="Codigo_Afip" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="dbLuxorModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Usuario_Rol" ColumnName="Id_Usuario_Rol" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios_Roles">
+            <EntityTypeMapping TypeName="dbLuxorModel.Usuarios_Roles">
+              <MappingFragment StoreEntitySet="Usuarios_Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medios_Pagos">
+            <EntityTypeMapping TypeName="dbLuxorModel.Medios_Pagos">
+              <MappingFragment StoreEntitySet="Medios_Pagos">
+                <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes_Tipos">
+            <EntityTypeMapping TypeName="dbLuxorModel.Clientes_Tipos">
+              <MappingFragment StoreEntitySet="Clientes_Tipos">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Actividades">
+            <EntityTypeMapping TypeName="dbLuxorModel.Actividades">
+              <MappingFragment StoreEntitySet="Actividades">
+                <ScalarProperty Name="Descripcion_Larga" ColumnName="Descripcion_Larga" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes_Actividades">
+            <EntityTypeMapping TypeName="dbLuxorModel.Clientes_Actividades">
+              <MappingFragment StoreEntitySet="Clientes_Actividades">
+                <ScalarProperty Name="Id_Actividades" ColumnName="Id_Actividades" />
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleadores_Tipo">
+            <EntityTypeMapping TypeName="dbLuxorModel.Empleadores_Tipo">
+              <MappingFragment StoreEntitySet="Empleadores_Tipo">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Monotributo_Categorias">
+            <EntityTypeMapping TypeName="dbLuxorModel.Monotributo_Categorias">
+              <MappingFragment StoreEntitySet="Monotributo_Categorias">
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Monotributo_Regimen">
+            <EntityTypeMapping TypeName="dbLuxorModel.Monotributo_Regimen">
+              <MappingFragment StoreEntitySet="Monotributo_Regimen">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegimenGral_Categorias">
+            <EntityTypeMapping TypeName="dbLuxorModel.RegimenGral_Categorias">
+              <MappingFragment StoreEntitySet="RegimenGral_Categorias">
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tareas_Estados">
+            <EntityTypeMapping TypeName="dbLuxorModel.Tareas_Estados">
+              <MappingFragment StoreEntitySet="Tareas_Estados">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes_CtaCte">
+            <EntityTypeMapping TypeName="dbLuxorModel.Clientes_CtaCte">
+              <MappingFragment StoreEntitySet="Clientes_CtaCte">
+                <ScalarProperty Name="Haber" ColumnName="Haber" />
+                <ScalarProperty Name="Debe" ColumnName="Debe" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+                <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tareas">
+            <EntityTypeMapping TypeName="dbLuxorModel.Tareas">
+              <MappingFragment StoreEntitySet="Tareas">
+                <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+                <ScalarProperty Name="Id_Tareas_Estado" ColumnName="Id_Tareas_Estado" />
+                <ScalarProperty Name="Id_Tareas_Tipo" ColumnName="Id_Tareas_Tipo" />
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tareas_Principales">
+            <EntityTypeMapping TypeName="dbLuxorModel.Tareas_Principales">
+              <MappingFragment StoreEntitySet="Tareas_Principales">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tareas_Periodos">
+            <EntityTypeMapping TypeName="dbLuxorModel.Tareas_Periodos">
+              <MappingFragment StoreEntitySet="Tareas_Periodos">
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tareas_Secundarias">
+            <EntityTypeMapping TypeName="dbLuxorModel.Tareas_Secundarias">
+              <MappingFragment StoreEntitySet="Tareas_Secundarias">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id_Tarea_Principal" ColumnName="Id_Tarea_Principal" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tareas_Tipos">
+            <EntityTypeMapping TypeName="dbLuxorModel.Tareas_Tipos">
+              <MappingFragment StoreEntitySet="Tareas_Tipos">
+                <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id_Tarea_Periodo" ColumnName="Id_Tarea_Periodo" />
+                <ScalarProperty Name="Id_Organismo" ColumnName="Id_Organismo" />
+                <ScalarProperty Name="Id_Tarea_Secundaria" ColumnName="Id_Tarea_Secundaria" />
+                <ScalarProperty Name="Id_Tarea_Principal" ColumnName="Id_Tarea_Principal" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes_Tareas">
+            <EntityTypeMapping TypeName="dbLuxorModel.Clientes_Tareas">
+              <MappingFragment StoreEntitySet="Clientes_Tareas">
+                <ScalarProperty Name="Id_Tarea_Tipo" ColumnName="Id_Tarea_Tipo" />
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetTareas" FunctionName="dbLuxorModel.Store.GetTareas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLuxorModel.GetTareas_Result">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id_Tarea_Tipo" ColumnName="Id_Tarea_Tipo" />
+                <ScalarProperty Name="Id_Tarea_Principal" ColumnName="Id_Tarea_Principal" />
+                <ScalarProperty Name="Id_Tarea_Secundaria" ColumnName="Id_Tarea_Secundaria" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="dbLuxorModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Id_Metodo_Facturacion" ColumnName="Id_Metodo_Facturacion" />
+                <ScalarProperty Name="Tasas_Municipales" ColumnName="Tasas_Municipales" />
+                <ScalarProperty Name="Impuestos_Conv_Multi" ColumnName="Impuestos_Conv_Multi" />
+                <ScalarProperty Name="Impuestos_Ing_Brutos" ColumnName="Impuestos_Ing_Brutos" />
+                <ScalarProperty Name="Afip_Regimen_Gral" ColumnName="Afip_Regimen_Gral" />
+                <ScalarProperty Name="Afip_Empleador" ColumnName="Afip_Empleador" />
+                <ScalarProperty Name="Afip_Monotributo" ColumnName="Afip_Monotributo" />
+                <ScalarProperty Name="Representante_Cuit" ColumnName="Representante_Cuit" />
+                <ScalarProperty Name="Representante" ColumnName="Representante" />
+                <ScalarProperty Name="Telefono_Particular" ColumnName="Telefono_Particular" />
+                <ScalarProperty Name="Telefono_Comercial" ColumnName="Telefono_Comercial" />
+                <ScalarProperty Name="Domicilio_3" ColumnName="Domicilio_3" />
+                <ScalarProperty Name="Domicilio_2" ColumnName="Domicilio_2" />
+                <ScalarProperty Name="Domicilio_1" ColumnName="Domicilio_1" />
+                <ScalarProperty Name="Cuit" ColumnName="Cuit" />
+                <ScalarProperty Name="Dni" ColumnName="Dni" />
+                <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+                <ScalarProperty Name="Razon_Social" ColumnName="Razon_Social" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Id_Clientes_Tipo" ColumnName="Id_Clientes_Tipo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Metodos_Facturacion">
+            <EntityTypeMapping TypeName="dbLuxorModel.Metodos_Facturacion">
+              <MappingFragment StoreEntitySet="Metodos_Facturacion">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

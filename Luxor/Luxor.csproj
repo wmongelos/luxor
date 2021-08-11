@@ -1,0 +1,563 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B29D0209-30E7-4691-87D5-B4E1BB77DC0A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Luxor</RootNamespace>
+    <AssemblyName>Luxor</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FE">
+      <HintPath>..\..\FE\FE\bin\Debug\FE.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\ActividadNegocios.cs" />
+    <Compile Include="BLL\ConfiguracionNegocios.cs" />
+    <Compile Include="BLL\CtaCteNegocios.cs" />
+    <Compile Include="BLL\EntidadesBancNegocios.cs" />
+    <Compile Include="BLL\FComunicacionNegocios.cs" />
+    <Compile Include="BLL\FormaPagoNegocios.cs" />
+    <Compile Include="BLL\Monotributo.cs" />
+    <Compile Include="BLL\OrganismosNegocios.cs" />
+    <Compile Include="BLL\ClienteNegocios.cs" />
+    <Compile Include="BLL\RolNegocios.cs" />
+    <Compile Include="BLL\TareasNegocios.cs" />
+    <Compile Include="BLL\UsuarioNegocios.cs" />
+    <Compile Include="Controls\ComboBoxAdv.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ComboBoxAdv.Designer.cs">
+      <DependentUpon>ComboBoxAdv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DataGrid.Designer.cs">
+      <DependentUpon>DataGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataGridAction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DataGridAction.Designer.cs">
+      <DependentUpon>DataGridAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\FormBase.Designer.cs">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FormClose.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FormClose.Designer.cs">
+      <DependentUpon>FormClose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MenuButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MenuButton.Designer.cs">
+      <DependentUpon>MenuButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NavBarButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NavBarButton.Designer.cs">
+      <DependentUpon>NavBarButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PanelAdv.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PanelAdv.Designer.cs">
+      <DependentUpon>PanelAdv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TextBoxAdv.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TextBoxAdv.Designer.cs">
+      <DependentUpon>TextBoxAdv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Tools.cs" />
+    <Compile Include="DAL\Actividades.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Clientes.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Clientes_Actividades.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Clientes_CtaCte.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Clientes_Tareas.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Clientes_Tipos.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Configuracion.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DbLuxor.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbLuxor.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DbLuxor.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DbLuxor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbLuxor.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Empleadores_Tipo.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Entidades_Bancarias.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Formas_Comunicacion.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\GetTareas_Result.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Localidades.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Medios_Pagos.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Metodos_Facturacion.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Monotributo_Categorias.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Monotributo_Regimen.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Organismos.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Provincias.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\RegimenGral_Categorias.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Tareas.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Tareas_Estados.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Tareas_Periodos.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Tareas_Principales.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Tareas_Secundarias.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Tareas_Tipos.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Usuarios.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Usuarios_Roles.cs">
+      <DependentUpon>DbLuxor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Afip.cs" />
+    <Compile Include="Entities\CurrentUser.cs" />
+    <Compile Include="FrmCtaCteMov.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCtaCteMov.Designer.cs">
+      <DependentUpon>FrmCtaCteMov.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmABMOrganismos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmABMOrganismos.Designer.cs">
+      <DependentUpon>FrmABMOrganismos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmABMTareasTipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmABMTareasTipos.Designer.cs">
+      <DependentUpon>FrmABMTareasTipos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmABMUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmABMUser.Designer.cs">
+      <DependentUpon>FrmABMUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmABMGeneric.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmABMGeneric.Designer.cs">
+      <DependentUpon>FrmABMGeneric.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscador.Designer.cs">
+      <DependentUpon>FrmBuscador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCtaCte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCtaCte.Designer.cs">
+      <DependentUpon>FrmCtaCte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTareasTipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTareasTipos.Designer.cs">
+      <DependentUpon>FrmTareasTipos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGestionTareas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGestionTareas.Designer.cs">
+      <DependentUpon>FrmGestionTareas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClientes.Designer.cs">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConfiguración.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConfiguración.Designer.cs">
+      <DependentUpon>FrmConfiguración.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFichaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFichaCliente.Designer.cs">
+      <DependentUpon>FrmFichaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmListado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListado.Designer.cs">
+      <DependentUpon>FrmListado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMenuConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMenuConfig.Designer.cs">
+      <DependentUpon>FrmMenuConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmModal.Designer.cs">
+      <DependentUpon>FrmModal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPermisos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPermisos.Designer.cs">
+      <DependentUpon>FrmPermisos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\ComboBoxAdv.resx">
+      <DependentUpon>ComboBoxAdv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DataGrid.resx">
+      <DependentUpon>DataGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DataGridAction.resx">
+      <DependentUpon>DataGridAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FormBase.resx">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FormClose.resx">
+      <DependentUpon>FormClose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MenuButton.resx">
+      <DependentUpon>MenuButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\NavBarButton.resx">
+      <DependentUpon>NavBarButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PanelAdv.resx">
+      <DependentUpon>PanelAdv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TextBoxAdv.resx">
+      <DependentUpon>TextBoxAdv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCtaCteMov.resx">
+      <DependentUpon>FrmCtaCteMov.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmABMOrganismos.resx">
+      <DependentUpon>FrmABMOrganismos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmABMTareasTipos.resx">
+      <DependentUpon>FrmABMTareasTipos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmABMUser.resx">
+      <DependentUpon>FrmABMUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmABMGeneric.resx">
+      <DependentUpon>FrmABMGeneric.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscador.resx">
+      <DependentUpon>FrmBuscador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCtaCte.resx">
+      <DependentUpon>FrmCtaCte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTareasTipos.resx">
+      <DependentUpon>FrmTareasTipos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGestionTareas.resx">
+      <DependentUpon>FrmGestionTareas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClientes.resx">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConfiguración.resx">
+      <DependentUpon>FrmConfiguración.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFichaCliente.resx">
+      <DependentUpon>FrmFichaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListado.resx">
+      <DependentUpon>FrmListado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMenuConfig.resx">
+      <DependentUpon>FrmMenuConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmModal.resx">
+      <DependentUpon>FrmModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPermisos.resx">
+      <DependentUpon>FrmPermisos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="DAL\DbLuxor.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbLuxor.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DAL\DbLuxor.edmx.diagram">
+      <DependentUpon>DbLuxor.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-contact-details-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-circled-menu-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-menu-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-multiply-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-male-user-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-squared-menu-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-squared-menu-32 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-xbox-l-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-microsoft-excel-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-print-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-property-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-google-web-search-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-in-browser-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-property-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-property-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-document-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-in-list-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DAL\DbLuxor.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DbLuxor.Context.cs</LastGenOutput>
+      <DependentUpon>DbLuxor.edmx</DependentUpon>
+    </Content>
+    <Content Include="DAL\DbLuxor.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbLuxor.edmx</DependentUpon>
+      <LastGenOutput>DbLuxor.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\icons8-check-book-32.png" />
+    <None Include="Resources\icons8-bank-card-dollar-32.png" />
+    <None Include="Resources\icons8-todo-list-32.png" />
+    <None Include="Resources\icons8-organization-32.png" />
+    <None Include="Resources\icons8-bank-building-32.png" />
+    <None Include="Resources\icons8-window-secured-32.png" />
+    <None Include="Resources\icons8-user-secured-32.png" />
+    <None Include="Resources\icons8-access-32.png" />
+    <None Include="Resources\icons8-settings-321.png" />
+    <None Include="Resources\icons8-settings-32.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
